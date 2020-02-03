@@ -7,9 +7,9 @@ namespace Excel.NET
 {
     public static class Application
     {
-        private static readonly EX.Application _app = new EX.Application();
+        internal static readonly EX.Application _app = new EX.Application();
 
-        private static readonly Dictionary<string, WorkBook> _workbooks = new Dictionary<string, WorkBook>();
+        internal static readonly Dictionary<string, WorkBook> _workbooks = new Dictionary<string, WorkBook>();
 
         public static WorkBook OpenWorkBook(string fileName)
         {

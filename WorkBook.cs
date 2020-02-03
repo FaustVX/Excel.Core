@@ -7,7 +7,7 @@ namespace Excel.NET
     {
         private readonly Workbook _workbook;
 
-        private readonly Dictionary<string, WorkSheet> _worksheets = new Dictionary<string, WorkSheet>();
+        internal readonly Dictionary<string, WorkSheet> _worksheets = new Dictionary<string, WorkSheet>();
 
         public WorkBook(Workbook workbook)
         {

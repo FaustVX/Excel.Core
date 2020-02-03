@@ -14,6 +14,9 @@ namespace Excel.NET
             _workbook = workbook;
         }
 
+        public string Name
+            => _workbook.Name;
+
         public WorkSheet ActiveSheet
             => GetSheet((Worksheet)_workbook.ActiveSheet);
 
@@ -21,6 +24,6 @@ namespace Excel.NET
             => GetSheet((Worksheet)_workbook.Worksheets[name]);
 
         private WorkSheet GetSheet(Worksheet sheet)
-            => _worksheets.TryGetValue(sheet.Name, out var s) ? s : _worksheets[sheet.Name] = new WorkSheet(sheet);
+            => _worksheets.TryGetValue(sheet.Name, out var ws) ? ws : _worksheets[sheet.Name] = new WorkSheet(sheet, this);
     }
 }

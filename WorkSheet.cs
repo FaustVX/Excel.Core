@@ -13,17 +13,23 @@ namespace Excel.NET
             _book = book;
         }
 
-        public Range Range(string start)
-            => _worksheet.Range[start];
+        public Cell Range(string start)
+            => new Cell(_worksheet.Range[start], this);
 
         public Range Range(string start, string end)
-            => _worksheet.Range[start, end];
+            => new Range(_worksheet.Range[start, end], this);
 
         public string Name
         {
             get => _worksheet.Name;
             set
             {
+                if (Name == value)
+                    return;
+
+                if (_book._worksheets.ContainsKey(value))
+                    throw new System.ArgumentException($"\"{value}\" is already used.");
+
                 _book._worksheets.Remove(Name);
                 _worksheet.Name = value;
                 _book._worksheets.Add(Name, this);

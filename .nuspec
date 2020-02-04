@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Excel.Core</id>
+        <version>1.0</version>
+        <authors>FaustVX</authors>
+        <projectUrl>https://github.com/FaustVX/Excel.Core</projectUrl>
+        <description>An Excel Interop Library for .NET</description>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5" />
+        </dependencies>
+    </metadata>
+</package>

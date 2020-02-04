@@ -1,7 +1,9 @@
 ﻿using Microsoft.Office.Interop.Excel;
+using System.Diagnostics;
 
 namespace Excel.NET
 {
+    [DebuggerDisplay("{Name}")]
     public class WorkSheet
     {
         private readonly Worksheet _worksheet;
@@ -18,6 +20,9 @@ namespace Excel.NET
 
         public Range Range(string start, string end)
             => new Range(_worksheet.Range[start, end], this);
+
+        public Range Range(string start, int rowSize, int columnSize)
+            => Range(start).Resize(rowSize, columnSize);
 
         public string Name
         {

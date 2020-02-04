@@ -1,8 +1,10 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Excel.NET
 {
+    [DebuggerDisplay("{Name}")]
     public class WorkBook
     {
         private readonly Workbook _workbook;

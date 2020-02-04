@@ -27,5 +27,8 @@ namespace Excel.NET
             get => _app.Visible;
             set => _app.Visible = value;
         }
+
+        public static void Quit()
+            => _app.Quit();
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using EX = Microsoft.Office.Interop.Excel;
 
 namespace Excel.NET
 {
-    public readonly struct Cell
+    [DebuggerDisplay("{Address}: {Value}")]
+    public class Cell
     {
         private readonly EX.Range _range;
         private readonly WorkSheet _sheet;
@@ -14,6 +16,9 @@ namespace Excel.NET
             _range = range;
             _sheet = sheet;
         }
+
+        public string Address
+            => _range.Address.Replace("$", "");
 
         public int Column
             => _range.Column;
@@ -29,7 +34,7 @@ namespace Excel.NET
 
         public string ValueString
         {
-            get => (string)Value;
+            get => Value?.ToString();
             set => Value = value;
         }
 
@@ -55,7 +60,7 @@ namespace Excel.NET
             => _range.Select();
 
         public Range Resize(int rowSize, int columnSize)
-            => new Range((EX.Range)_range[rowSize, columnSize], _sheet);
+            => new Range(_range.Resize[rowSize, columnSize], _sheet);
 
         public Cell Offset(int row, int column)
             => new Cell(_range.Offset[row, column], _sheet);

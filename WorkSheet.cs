@@ -35,5 +35,8 @@ namespace Excel.NET
                 _book._worksheets.Add(Name, this);
             }
         }
+
+        public void Select()
+            => _worksheet.Select();
     }
 }

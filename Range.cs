@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using EX = Microsoft.Office.Interop.Excel;
 
@@ -29,6 +29,9 @@ namespace Excel.NET
 
         public int Height
             => (int)_range.Height;
+
+        public void Select()
+            => _range.Select();
 
         public Range Resize(int rowSize, int columnSize)
             => new Range((EX.Range)_range[rowSize, columnSize], _sheet);

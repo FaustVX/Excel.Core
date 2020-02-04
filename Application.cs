@@ -21,5 +21,11 @@ namespace Excel.NET
 
         public static WorkBook GetWorkBook(string name)
             => _workbooks[name];
+
+        public static bool Visible
+        {
+            get => _app.Visible;
+            set => _app.Visible = value;
+        }
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="Application.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Range.cs" />
+    <Compile Include="Value.cs" />
     <Compile Include="WorkBook.cs" />
     <Compile Include="WorkSheet.cs" />
   </ItemGroup>

@@ -5,17 +5,20 @@ using EX = Microsoft.Office.Interop.Excel;
 
 namespace Excel.NET
 {
-    [DebuggerDisplay("{Address}: {Value}")]
+    [DebuggerDisplay("{Address}: {Value.String}")]
     public class Cell
     {
-        private readonly EX.Range _range;
+        internal readonly EX.Range _range;
         private readonly WorkSheet _sheet;
 
         public Cell(EX.Range range, WorkSheet sheet)
         {
             _range = range;
             _sheet = sheet;
+            Value = new Value(this);
         }
+
+        public Value Value { get; }
 
         public string Address
             => _range.Address.Replace("$", "");
@@ -26,28 +29,16 @@ namespace Excel.NET
         public int Row
             => _range.Row;
 
-        public object Value
+        public double RowHeight
         {
-            get => _range.Value;
-            set => _range.Value = value;
+            get => (double)_range.RowHeight;
+            set => _range.RowHeight = value;
         }
 
-        public string ValueString
+        public double ColumnWidth
         {
-            get => Value?.ToString();
-            set => Value = value;
-        }
-
-        public double ValueDouble
-        {
-            get => (double)Value;
-            set => Value = value;
-        }
-
-        public int ValueInt
-        {
-            get => (int)ValueDouble;
-            set => ValueDouble = value;
+            get => (double)_range.ColumnWidth;
+            set => _range.ColumnWidth = value;
         }
 
         public string Formula

@@ -36,6 +36,9 @@ namespace Excel.NET
         public int Height
             => _range.Rows.Count;
 
+        public int Count
+            => _range.Count;
+
         public void Select()
             => _range.Select();
 
